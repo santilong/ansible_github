@@ -1,0 +1,20 @@
+- hosts: k1
+  remote_user: opsuser
+  become: true
+  gather_facts: no
+  vars:
+    users:
+    - name: tom
+      age: 18
+      hobby:
+      - Skateboard
+      - VideoGame
+    - name: jerry
+      age: 20
+      hobby:
+      - Music
+  tasks:
+  - debug:
+      msg: "{{ users | map(attribute='name') |list}}" 
+  - debug:
+      msg: "{{ users | map(attribute='name') | join(';') }}" 
