@@ -1,4 +1,8 @@
-- vars:
+- hosts: all
+  remote_user: opsuser
+  become: true
+  gather_facts: no
+  vars:
     users:
     - name: tom
       age: 18
